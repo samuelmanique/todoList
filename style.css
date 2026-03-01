@@ -1,0 +1,171 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.main{
+    display: flex;
+    justify-content: center;
+    background-image: linear-gradient(to right, rgb(28, 28, 109), rgb(59, 47, 100), rgb(93, 22, 151));
+    min-height: 100vh;
+}
+
+.forms{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.risc{
+    text-decoration: line-through;
+}
+
+#btnAdd{
+    background: none;
+    border: none;
+    transition: transform 0.3s ease;
+}
+
+
+#btnAdd img{
+    
+    width: 45px;
+    cursor: pointer;
+    
+}
+
+#btnAdd:hover{
+    transform: scale(1.1);
+}
+
+.container{
+    display: flex;
+    padding: 30px;
+    width: 500px;
+    height: 600px;
+    flex-direction: column;
+    
+    color: black;
+    margin-top: 150px;
+    background-color: white;
+
+}
+
+.container .forms{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    
+}
+
+#cleanList{
+    margin-top: 10px;
+   color: white;
+    background-color: rgb(145, 87, 192) ;
+    padding: 7px;
+    border: none;
+    border-radius: 3px;
+}
+
+#cleanList:hover{
+    color: rgb(59, 47, 100);
+    background-color: white;
+    border: 0.5px solid rgb(59, 47, 100);
+    box-shadow: 0 0 8px rgba(93, 22, 151, 0.4);
+}
+
+input{
+    height: 40px;
+    font-size: 20px;
+    padding: 5px;
+}
+
+h2{
+    margin:auto;
+    margin-top: 5px;
+    font-family: sans-serif;
+    
+}
+
+h1{
+    font-family: sans-serif;
+    
+}
+
+.items{
+    display: flex;
+    padding: 10px;
+    background-color: #e9e7e7;
+    max-width: 100%;
+    min-width: 100%;
+    margin-bottom: 5px;
+    align-items: center;
+    font-family: sans-serif;
+    gap: 10px;
+    
+}
+
+.items button{
+    margin-left: auto;
+    color: white;
+    background-color: rgb(145, 87, 192) ;
+    padding: 7px;
+    border: none;
+    border-radius: 3px;
+}
+
+.items button:hover{
+    color: white;
+    background-color: #ff4d4d;;
+    box-shadow: 0 0 8px rgba(93, 22, 151, 0.4);
+}
+.items span{
+    word-break: break-all;  
+}
+
+ul{
+    overflow-y: auto; 
+    height: 400px;
+}
+
+.items input{
+    appearance: none; 
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgb(93, 22, 151);
+    border-radius: 5px; 
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    background-color: white;
+}
+
+.items input:checked {
+    background-color: rgb(93, 22, 151);
+}
+
+.items input:checked::after {
+    content: "✓";
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.items input:hover {
+    box-shadow: 0 0 8px rgba(93, 22, 151, 0.4);
+}
+
+.messageEmpty{
+    display: none;
+}
+
+ul:empty + .messageEmpty{
+    display: block;
+}
+
