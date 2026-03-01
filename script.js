@@ -13,6 +13,8 @@ function add(){
     
     createItem(inputText.value)
 
+    saveItems()
+
     numberCount()
 
     inputText.value = ""
@@ -39,6 +41,7 @@ function createItem(text, concluido = false){
 
     const removeBtn = createBtnRemove(li)
     
+
     const texto = document.createElement("span")
     texto.textContent = text
 
@@ -64,11 +67,44 @@ function createBtnRemove(item){
              
         item.remove()
         inputText.value = ""
-        
+        saveItems()
         numberCount()
     })
 
     return removeBtn
+}
+
+function saveItems(){
+    const items = []
+
+    document.querySelectorAll("#ul li span").forEach(item => {
+
+        const checkbox = item.closest('li').querySelector('input[type="checkbox"]');
+
+        items.push({
+            texto: item.textContent,
+            concluido: checkbox.checked,
+            
+        })
+
+       })
+    
+    
+
+    localStorage.setItem("tarefas", JSON.stringify(items))   
+    
+}
+
+function getItems(){
+
+    const tarefas = JSON.parse(localStorage.getItem("tarefas")) || []
+
+    tarefas.forEach(item => {
+        createItem(item.texto, item.concluido)
+    });
+
+    count.textContent = tarefas.length
+    numberCount()
 }
 
 function createCheckbox(text){
@@ -77,7 +113,7 @@ function createCheckbox(text){
 
     checkBox.addEventListener("change", () => {
         text.classList.toggle("risc") 
-        
+        saveItems()
     })
 
     return checkBox
@@ -88,7 +124,7 @@ function cleanList(){
     btnClear.addEventListener("click", () => {
         count.textContent = `Tarefas: 0 `
         ul.textContent = ""
-        
+        localStorage.removeItem("tarefas")
         
     })
     
@@ -98,5 +134,5 @@ enterPress()
 
 cleanList()
 
-
+getItems()
 
